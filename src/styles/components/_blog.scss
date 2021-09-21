@@ -1,0 +1,59 @@
+@use '../util/mixins' as *;
+@use '../util/variables' as *;
+@use '../themes/defaultThemes' as *;
+
+
+.stories {
+    width: 90vw;
+    max-width: 1170px;
+    margin: 0 auto 5rem;
+    display: grid;
+    grid-gap: 2rem;
+    gap: 2rem;
+.story{
+    background: #fff;
+    border-radius: .25rem;
+    padding: 1rem 2rem;
+
+    .title {
+        line-height: 1.5;
+        margin-bottom: .25rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+   .info{
+        margin-bottom: .5rem;
+    color: #617d98;
+    color: var(--clr-grey-5);
+    font-size: .8rem;
+   }
+ .btn-cont{
+     display: flex;
+     justify-content: space-between;
+     width: 40%;
+    .read-link, .remove-btn {
+        font-size: .85rem;
+        text-transform: capitalize;
+    }
+    .remove-btn {
+        background: transparent;
+        color: #bb2525;
+        border-color: transparent;
+        cursor: pointer;
+    }
+ }
+    
+   
+}
+
+}
+
+
+
+@media screen and (min-width: 992px){
+.stories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+}

@@ -1,0 +1,63 @@
+@use '../util/mixins' as *;
+@use '../util/variables' as *;
+@use '../themes/defaultThemes' as *;
+
+.search-form{
+    width: 90vw;
+    max-width: 1170px;
+    margin: 5rem auto 3rem;
+    .form-input {
+        width: 100%;
+        border: none;
+        border-bottom: 3px solid #bcccdc;
+                max-width: 600px;
+        background: transparent;
+        padding: 1rem;
+        font-size: 1rem;
+        color: #324d67;
+        color: var(--clr-grey-3);
+        text-transform: uppercase;
+        letter-spacing: .1rem;
+        letter-spacing: var(--spacing);
+        margin-top: 1rem;
+        outline: none;
+    }
+    h2{
+        font-weight: bold;
+        color: black;
+    }
+    
+}       
+
+.btn-container {
+
+    width: 90vw;
+    max-width: 1170px;
+    max-width: $max-width;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button{
+        margin: 1rem;
+        padding: .45rem .70rem;
+        text-transform: capitalize;
+        font-weight: 700;
+        background-color: #49a6e9!important;
+        background: $clr-primary-5;
+        border-radius: .25rem;
+        border-radius: $radius;
+        color: #fff;
+        color: $white;
+        letter-spacing: .1rem;
+        letter-spacing: $spacing;
+        cursor: pointer;
+    }
+    p{
+        margin-bottom: 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: black;
+    }
+}

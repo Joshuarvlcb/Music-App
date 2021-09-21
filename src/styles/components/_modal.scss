@@ -1,0 +1,38 @@
+@use '../util/mixins' as *;
+@use '../util/variables' as *;
+@use '../themes/defaultThemes' as *;
+
+.modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include box(100%);
+    background-color: rgba(0,0,0,.5);
+    display: grid;
+    place-items: center;
+    transition: $transition;
+    visibility: hidden;
+    z-index: -1;
+    &.show-modal{
+        visibility: hidden;
+        z-index: 99;
+    }
+    .modal-container{
+        background: $white;
+        border-radius: $radius;
+        @include box(90vw,30vh);
+        max-width: $fixed-width;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        position: relative;
+    }
+    .close-modal-btn{
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        color: $red-dark;
+        cursor: pointer;
+    }
+}

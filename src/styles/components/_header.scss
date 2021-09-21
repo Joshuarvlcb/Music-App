@@ -1,0 +1,42 @@
+@use '../util/mixins' as *;
+@use '../util/variables' as *;
+@use '../themes/defaultThemes' as *;
+
+.header{
+    margin: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__icon{
+        @include box(50px);
+        border-radius: 50%;
+        background:url(https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+        background-position: top;
+        background-size: cover;
+    }   
+    .search__container{
+        margin-right: 25%;
+    }
+    &__notification{
+        background:#332830;
+        border-radius: 50%;
+        background-position: center;
+        @include box(50px);
+        @include flex-center;
+        position: relative;
+
+        .bell{
+            font-size: 1.3rem;
+            color: white;
+        }
+        .red{
+            position: absolute;
+            top: .8rem;
+            right: 1.1rem;
+            @include box(8px);
+            background-color: red;
+            border-radius: 50%;
+            
+        }
+    }
+}

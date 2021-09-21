@@ -1,0 +1,24 @@
+@use '../util/mixins' as *;
+@use '../util/variables' as *;
+@use '../themes/defaultThemes' as *;
+.item{
+    background-color: $clr-grey-8;
+    @include flex-center;
+    max-width:$max-width;
+    margin: 2rem auto;
+    justify-content: space-between;
+    border-radius: $radius;
+    padding: 1rem 2rem;
+    button{
+        background:$red-dark ;
+        margin: 0;
+        &:hover{
+            color: $white;
+            background: $red-light;
+        }
+    }
+    h4,p{
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+}

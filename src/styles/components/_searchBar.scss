@@ -1,0 +1,37 @@
+
+.search {
+    &__container{
+        margin-top: .2rem;
+        position: relative;
+
+    }
+    
+    &__input {
+        color:rgb(206, 206, 206);
+        outline:none;
+        width: 28rem;
+        padding: 12px 24px;
+        background-color: transparent;
+        transition: transform 250ms ease-in-out;
+        font-size: 14px;
+        line-height: 18px;
+        
+        background-color: transparent;
+ 
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+        background-position: 95% center;
+        border-radius: 50px;
+        border: 1.5px solid #62626A;
+        transition: all 250ms ease-in-out;
+        backface-visibility: hidden;
+    }
+    &__icon{
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        color: rgb(206, 206, 206);
+    }
+    }
