@@ -2,7 +2,6 @@
 @use '../util/variables' as *;
 @use '../themes/defaultThemes' as *;
 
-
 .navbar{
     display: flex;
     flex-direction: column;
@@ -10,10 +9,10 @@
     align-items: center;
     width: 170px;
     justify-content: space-evenly;
+
     &__icon{
         font-size: 1.6rem;
         color: white;
         cursor: pointer;
-        
-    }
-}
+    };
+};
