@@ -8,7 +8,7 @@ const Header = () => {
         <div className = 'header'>
             <div className="header__icon"></div>
             
-            <div class="search__container">
+            <div className="search__container">
                 <input class="search__input" type="text" placeholder="Search"/>
                 <FiSearch className = 'search__icon'/>
             </div>
