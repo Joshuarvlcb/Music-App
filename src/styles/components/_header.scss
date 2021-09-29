@@ -2,6 +2,10 @@
 @use '../util/variables' as *;
 @use '../themes/defaultThemes' as *;
 
+.app-con{
+    position: relative;
+}
+
 .header{
     margin: 3rem 4rem;
     display: flex;

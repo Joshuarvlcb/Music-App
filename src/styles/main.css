@@ -271,6 +271,10 @@ body {
   outline: none;
 }
 
+.app-con {
+  position: relative;
+}
+
 .header {
   margin: 3rem 4rem;
   display: flex;
@@ -349,13 +353,80 @@ body {
   flex-direction: column;
   height: 50vh;
   align-items: center;
-  width: 170px;
+  flex: 0 0 12%;
   justify-content: space-evenly;
 }
 .navbar__icon {
   font-size: 1.6rem;
   color: white;
   cursor: pointer;
+}
+
+.main-con {
+  display: flex;
+}
+
+.home {
+  margin-left: 5rem;
+  margin-top: 1rem;
+  display: flex;
+  flex: 0 0 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.home__title {
+  color: white;
+  margin-bottom: 2rem;
+}
+.home .played {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  cursor: pointer;
+  display: flex;
+  background-color: transparent;
+  margin-bottom: 1.5rem;
+  margin-right: 3rem;
+  justify-content: space-between;
+}
+.card__pic {
+  height: 55px;
+  border-radius: 0.5rem;
+}
+.card__info {
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+.card__info .artist {
+  color: gray;
+  font-size: 0.6rem;
+}
+.card .time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+}
+
+.player-component {
+  width: 100vw;
+  background-color: #1D1120;
+  height: 130px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }
 
 .single-movie {

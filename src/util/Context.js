@@ -6,9 +6,14 @@ const MusicContext = React.createContext();
 
 export const MusicProvider = ({children}) => {
     const {data} = useFetch();
+        const togglePlayer = () => {
+            document.addEventListener('click',(e) => {
+                console.log(e.target.className)
+            })
+        }
+     const [clicked, setClicked] = useState(false)
 
-
-    return <MusicContext.Provider value = {{data}}>
+    return <MusicContext.Provider value = {{data,clicked,setClicked,togglePlayer}}>
         {children}        
     </MusicContext.Provider>
 };
