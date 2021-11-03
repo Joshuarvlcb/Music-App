@@ -1,24 +1,32 @@
-import React from 'react';
+import React from "react";
 
-import {FiSearch} from 'react-icons/fi';
-import {IoNotificationsSharp}from 'react-icons/io5';
+import { FiSettings } from "react-icons/fi";
+import { IoNotificationsSharp } from "react-icons/io5";
+import Navbar from "./NavBar";
 
 const Header = () => {
-    return (
-        <div className = 'header'>
-            <div className="header__icon"></div>
-            
-            <div className="search__container">
+  return (
+    <div className="header">
+      <div className="header__start">
+        {/* block */}
+        <div className="header__name">musicat</div>
+        <div className="header__flex">
+          <div className="header__icon"></div>
+          <div className="user__name">Guest</div>
+        </div>
+      </div>
+      {/* <div className="search__container">
                 <input class="search__input" type="text" placeholder="Search"/>
                 <FiSearch className = 'search__icon'/>
-            </div>
+            </div> */}
 
-            <div className="header__notification">
-                <IoNotificationsSharp className = 'bell'/>
-                <div className="red"></div>
-            </div>
-        </div>
-    )
-}
+      <Navbar />
+      <li className="navbar__link setting">
+        <FiSettings className="navbar__icon" />
+        Setting
+      </li>
+    </div>
+  );
+};
 
 export default Header;
