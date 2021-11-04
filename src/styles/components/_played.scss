@@ -1,54 +1,54 @@
-@use '../util/mixins' as *;
-@use '../util/variables' as *;
-@use '../themes/defaultThemes' as *;
+@use "../util/mixins" as *;
+@use "../util/variables" as *;
+@use "../themes/defaultThemes" as *;
 
-.main-con{
-    display: flex;
+.main-con {
+  display: flex;
 }
 
-.home{
-    margin-left: 5rem;
-    margin-top: 1rem;
+.home {
+  margin-left: 2rem;
+  margin-top: 2rem;
+  display: flex;
+  flex: 0 0 80%;
+  @include flex-center;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  &__title {
+    color: white;
+    margin-bottom: 2rem;
+  }
+  .played {
     display: flex;
-    flex: 0 0 80%;
-    @include flex-center;
-    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+.card {
+  width: 300px;
+  cursor: pointer;
+  display: flex;
+  background-color: transparent;
+  margin-bottom: 1.5rem;
+  margin-right: 3rem;
+  justify-content: space-between;
+  &__pic {
+    height: 55px;
+    border-radius: 0.5rem;
+  }
+  &__info {
+    display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    &__title{
-        color: white;
-        margin-bottom:2rem ;
+    @include flex-center;
+    color: white;
+    text-align: center;
+    .artist {
+      color: gray;
+      font-size: 0.6rem;
     }
-    .played{
-        display: flex;
-        flex-wrap: wrap;
-    }
-}
-.card{
-    width: 300px;
-    cursor: pointer;
-    display: flex;
-    background-color: transparent;
-    margin-bottom: 1.5rem;
-    margin-right: 3rem;
-    justify-content: space-between;
-    &__pic{
-        height: 55px;
-        border-radius: .5rem;
-    }
-    &__info{
-        display: flex;
-        flex-direction: column;
-        @include flex-center;
-        color: white;
-        text-align: center;
-        .artist{
-            color: gray;
-            font-size: .6rem;
-        }
-    }
-   .time{
-        @include flex-center;
-        color: gray;
-    }
+  }
+  .time {
+    @include flex-center;
+    color: gray;
+  }
 }

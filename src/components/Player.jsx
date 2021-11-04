@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import SpotifyPlayer from "react-spotify-web-playback";
+const Player = ({ token, trackUri }) => {
+  if (!token) return null;
+  return (
+    <SpotifyPlayer
+      token={token}
+      showSaveIcon
+      uris={trackUri ? [trackUri] : []}
+    />
+  );
+};
 
-const Player = () => {
-    return (
-        <div className = 'player-component'>
-            
-        </div>
-    )
-}
-
-export default Player
+export default Player;
