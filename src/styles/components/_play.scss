@@ -1,0 +1,12 @@
+@use '../util/mixins' as *;
+@use '../util/variables' as *;
+@use '../themes/defaultThemes' as *;
+
+.player-component{
+    width: 100vw;
+    background-color: #1D1120;
+    height: 130px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
