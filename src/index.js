@@ -3,15 +3,15 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./styles/main.css";
-import { MusicProvider } from "./util/Context";
+import { AlbumProvider } from "./util/Album";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MusicProvider>
+    <AlbumProvider>
       <Router>
         <App />
       </Router>
-    </MusicProvider>
+    </AlbumProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

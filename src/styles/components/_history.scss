@@ -1,0 +1,11 @@
+.history {
+  width: 30vw;
+  min-height: 400px;
+  background-color: #393649;
+  &__title {
+    color: white;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+}

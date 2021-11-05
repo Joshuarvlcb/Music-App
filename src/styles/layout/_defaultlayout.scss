@@ -5,6 +5,15 @@
 .app {
   display: flex;
 }
+.flex {
+  display: flex;
+  min-width: 75vw;
+  justify-content: space-between;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
 .section {
   width: 90vw;
   margin: 0 auto;

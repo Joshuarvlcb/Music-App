@@ -6,14 +6,16 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  min-width: calc(100vw - 250px);
+  overflow: hidden;
+  width: 40vw;
+  position: relative;
   .album__header {
     color: white;
     font-size: 2rem;
     letter-spacing: 2px;
   }
   .row {
-    width: 75vw;
+    width: 38vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,20 +26,40 @@
       cursor: pointer;
     }
   }
-  .albums {
+  .albums-container {
     margin-top: 1rem;
     display: flex;
+    width: 480vw;
+    height: 200px;
+    position: relative;
+  }
+  .albums {
+    position: absolute;
+    left: 0;
+    display: flex;
+    transition: all 0.3s linear;
+
+    width: 100%;
+    height: 100%;
   }
   .album {
-    width: 200px;
-    text-align: center;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 235px;
+
+    align-items: flex-start;
     &__image {
-      width: 120px;
+      width: 150px;
+      cursor: pointer;
     }
     &__name {
-      color: white;
-      font-size: 0.8rem;
-      margin-bottom: 0.3rem;
+      width: 150px;
+      color: #98ff98;
+      font-size: 0.9rem;
+      letter-spacing: 0.4px;
+      margin: 0.3rem 0rem;
     }
     &__artist {
       color: #98ff98;
