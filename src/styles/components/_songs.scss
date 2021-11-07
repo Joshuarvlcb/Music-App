@@ -1,13 +1,32 @@
 @use "../util/mixins" as *;
 @use "../util/variables" as *;
 @use "../themes/defaultThemes" as *;
+.songs-page {
+  margin-bottom: 130px;
 
+  .banner {
+    margin-left: 220px;
+    width: 40vw;
+    margin-bottom: 1rem;
+
+    .banner__img {
+      width: 96%;
+      height: auto;
+    }
+  }
+  .back-btn {
+    margin-left: 220px;
+  }
+}
 .songs-container {
   display: flex;
   width: 40vw;
+  margin-left: 220px;
   flex-wrap: wrap;
   justify-content: flex-start;
+
   .song {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -15,19 +34,22 @@
     height: 70px;
     margin-right: 1.3rem;
     margin-bottom: 0.5rem;
-    background-color: #1a1824;
+    background-color: #242033;
     color: white;
     .close {
       @include flex-center;
+      margin-right: 0.5rem;
       .col {
         @include flex-center;
+
         flex-direction: column;
         align-items: flex-start;
       }
     }
     &__image {
       width: 50px;
-      margin-right: 1.5rem;
+      margin-left: 0.5rem;
+      margin-right: 1rem;
     }
     &__artist {
       color: #98ff98;
@@ -42,5 +64,34 @@
     .time {
       margin-right: 1rem;
     }
+    .dots {
+      cursor: pointer;
+      display: flex;
+      position: relative;
+      .dot {
+        height: 3px;
+        width: 3px;
+        background-color: white;
+        margin-right: 0.3rem;
+        border-radius: 50%;
+      }
+      .dropdown {
+        width: 150px;
+        height: auto;
+        position: absolute;
+        z-index: 1000;
+        top: 10px;
+        background-color: rgb(247, 59, 59);
+        display: none;
+        li {
+          margin-bottom: 1rem;
+        }
+      }
+    }
   }
+}
+.play {
+  font-size: 1.8rem;
+  margin-right: 0.3rem;
+  margin-left: 0.5rem;
 }

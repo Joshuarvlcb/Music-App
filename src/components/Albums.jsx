@@ -4,8 +4,7 @@ import Playlist from "./Playlist";
 import { useAlbumContext } from "../util/Album";
 
 const Albums = ({ albums, clicked }) => {
-  const { gettingAlbumData } = useAlbumContext();
-  console.log(gettingAlbumData);
+  const { publicData, spotify, songsData, data } = useAlbumContext();
   const albumsStyle = useRef();
   const [absValue, setAbsValue] = useState(0);
   /*
@@ -59,11 +58,11 @@ if px is passed the limit then we set left = 0
             <BiRightArrow
               className="arrow"
               onClick={() => {
-                if (absValue == 1440 || absValue > 1500) {
-                  setAbsValue(0);
+                // if (absValue == 1440 || absValue > 1500) {
+                //   setAbsValue(0);
 
-                  return (albumsStyle.current.style.left = 0 + "px");
-                }
+                //   return (albumsStyle.current.style.left = 0 + "px");
+                // }
                 setAbsValue((prev) => {
                   let val = prev + 180;
 
@@ -88,12 +87,26 @@ if px is passed the limit then we set left = 0
                     <div className="album" key={i}>
                       <img
                         onClick={() => {
-                          gettingAlbumData(
-                            id,
-                            obj.images[0].url,
-                            obj.name,
-                            obj.tracks
-                          );
+                          publicData({
+                            id: id,
+                            image: obj.images[0].url,
+                            name: obj.name,
+                          });
+                          spotify.getPlaylistTracks(id).then((data) => {
+                            console.log(data);
+                            songsData("playlist", data.body.items);
+
+                            /*
+                            body.items
+                    
+                            track
+                            artist[0].name
+                            duration_ms
+                            smallestImage(album.images).url
+                            name
+                            
+                            */
+                          });
                           clicked();
                         }}
                         src={obj.images[0].url}
@@ -102,19 +115,24 @@ if px is passed the limit then we set left = 0
                       />
                       <div
                         onClick={() => {
-                          gettingAlbumData(
-                            id,
-                            obj.images[0].url,
-                            obj.name,
-                            obj.tracks
-                          );
+                          publicData({
+                            id: id,
+                            image: obj.images[0].url,
+                            name: obj.name,
+                          });
+                          spotify.getPlaylistTracks(data.id).then((data) => {
+                            console.log(data);
+                            songsData("playlist", data.body.items);
+                            /*
+                          
+                            */
+                          });
                           clicked();
                         }}
                         className="album__name"
                       >
                         {obj.name}
                       </div>
-                      {/* <div className="album__artist">{obj.artists[0].name}</div> */}
                     </div>
                   );
                 })

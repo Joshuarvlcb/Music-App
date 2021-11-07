@@ -4,11 +4,13 @@
 
 .album-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
   overflow: hidden;
   width: 40vw;
   position: relative;
+  margin-left: 250px;
+  margin-right: 40px;
   .album__header {
     color: white;
     font-size: 2rem;

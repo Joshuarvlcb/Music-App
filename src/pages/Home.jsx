@@ -5,8 +5,8 @@ import SpotifyWebApi from "spotify-web-api-node";
 import Player from "../components/Player";
 import Albums from "../components/Albums";
 import History from "../components/History";
-import Album from "../pages/Album";
-
+import Songs from "../pages/Songs";
+import { useAlbumContext } from "../util/Album";
 const spotify = new SpotifyWebApi({
   clientId: "cb2ed77176254eebbdd48f2c8b025d1b",
 });
@@ -16,7 +16,7 @@ function Home({ code }) {
   // console.log(data);
   // console.log(data);
   const [clicked, setClicked] = useState(false);
-
+  const { initSpotify } = useAlbumContext();
   const token = useAuth(code);
 
   const [search, setSearch] = useState("");
@@ -27,6 +27,7 @@ function Home({ code }) {
   useEffect(() => {
     if (token) {
       spotify.setAccessToken(token);
+      initSpotify(spotify);
     }
   }, [token]);
 
@@ -34,10 +35,14 @@ function Home({ code }) {
     if (!token) return setSearchResults([]);
     // i have to request a get search the album we pass value when we click in new page
 
-    spotify.getFeaturedPlaylists().then((d) => {
-      console.log(d.body);
-      setAlbums(d.body.playlists.items);
-    });
+    spotify
+      .getPlaylistsForCategory("pop", {
+        limit: 20,
+      })
+      .then((d) => {
+        console.log(d.body);
+        setAlbums(d.body.playlists.items);
+      });
     /*
       playlists.items
 
@@ -112,13 +117,17 @@ function Home({ code }) {
     };
   }, [search, token]);
   const clickedOnAlbum = () => {
-    setClicked(true);
+    setClicked(!clicked);
   };
   return (
     <div className="home">
       <div className="flex">
         {clicked ? (
-          <Album spotify={spotify} smallestImage={smallestImage} />
+          <Songs
+            back={clickedOnAlbum}
+            spotify={spotify}
+            smallestImage={smallestImage}
+          />
         ) : (
           <Albums clicked={clickedOnAlbum} albums={albums} />
         )}

@@ -2,6 +2,14 @@
 @use "../util/mixins" as *;
 @use "../util/variables" as *;
 @use "../themes/defaultThemes" as *;
+.login-con {
+  min-height: 100vh;
+  @include flex-center;
+  width: 100vw;
+}
+.show {
+  display: block !important;
+}
 .app {
   display: flex;
 }

@@ -3,9 +3,11 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=cb2ed77176254
 
 const Login = () => {
   return (
-    <button>
-      <a href={AUTH_URL}>login</a>
-    </button>
+    <div className="login-con">
+      <button>
+        <a href={AUTH_URL}>login</a>
+      </button>
+    </div>
   );
 };
 export default Login;
