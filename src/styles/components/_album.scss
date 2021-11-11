@@ -2,6 +2,74 @@
 @use "../util/variables" as *;
 @use "../themes/defaultThemes" as *;
 
+.albums-container-100 {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 250px;
+  overflow: hidden;
+  width: 80vw;
+  position: relative;
+  margin-right: 40px;
+  height: 300px;
+  .album__header {
+    color: white;
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  .row {
+    width: 38vw;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+    .arrow {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0.5rem;
+      cursor: pointer;
+    }
+  }
+  .album-container-100 {
+    margin-top: 1rem;
+    display: flex;
+    width: 200vw;
+    height: 200px;
+    position: relative;
+  }
+  .albums {
+    position: absolute;
+    left: 0;
+    display: flex;
+    transition: all 0.3s linear;
+
+    width: 100%;
+    height: 100%;
+  }
+  .album {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 235px;
+
+    align-items: flex-start;
+    &__image {
+      width: 150px;
+      cursor: pointer;
+    }
+    &__name {
+      width: 150px;
+      color: #98ff98;
+      font-size: 0.9rem;
+      letter-spacing: 0.4px;
+      margin: 0.3rem 0rem;
+    }
+    &__artist {
+      color: #98ff98;
+    }
+  }
+}
 .album-container {
   display: flex;
   justify-content: center;
@@ -11,6 +79,8 @@
   position: relative;
   margin-left: 250px;
   margin-right: 40px;
+  height: 300px;
+
   .album__header {
     color: white;
     font-size: 2rem;

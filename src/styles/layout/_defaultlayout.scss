@@ -13,6 +13,10 @@
 .app {
   display: flex;
 }
+// .blur {
+//   backdrop-filter: blur(5px);
+//   background-color: #01223770;
+// }
 .flex {
   display: flex;
   min-width: 75vw;
@@ -21,6 +25,7 @@
 .column {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 .section {
   width: 90vw;

@@ -16,7 +16,7 @@ const Heart = ({ name }) => {
       }}
       className={`heart ${
         hearts.some((arr) => {
-          return arr[2] == name;
+          return arr.name == name;
         }) || toggle
           ? "right"
           : ""

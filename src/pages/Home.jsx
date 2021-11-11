@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { useMusicContext } from "../util/Context";
 import useAuth from "../useAuth";
 import SpotifyWebApi from "spotify-web-api-node";
 import Player from "../components/Player";
 import Albums from "../components/Albums";
 import History from "../components/History";
-import Songs from "../pages/Songs";
 import { useAlbumContext } from "../util/Album";
+import Playlist from "../components/Playlist";
+
 const spotify = new SpotifyWebApi({
   clientId: "cb2ed77176254eebbdd48f2c8b025d1b",
 });
 
-function Home({ code }) {
+function Home() {
   // const { data, togglePlayer } = useMusicContext();
   // console.log(data);
   // console.log(data);
-  const [clicked, setClicked] = useState(false);
-  const { initSpotify } = useAlbumContext();
-  const token = useAuth(code);
+  useAuth();
 
-  const [search, setSearch] = useState("");
+  const [clicked, setClicked] = useState(false);
+  const { initSpotify, token } = useAlbumContext();
   const [searchResults, setSearchResults] = useState([]);
   const [albums, setAlbums] = useState([]);
+  const [search, setSearch] = useState("reik");
+  const [popular, setPopular] = useState([]);
+  const [party, setParty] = useState([]);
 
-  console.log(searchResults);
   useEffect(() => {
     if (token) {
       spotify.setAccessToken(token);
@@ -42,6 +43,20 @@ function Home({ code }) {
       .then((d) => {
         console.log(d.body);
         setAlbums(d.body.playlists.items);
+      });
+    spotify
+      .getPlaylistsForCategory("latin", {
+        limit: 20,
+      })
+      .then((d) => {
+        setPopular(d.body.playlists.items);
+      });
+    spotify
+      .getPlaylistsForCategory("party", {
+        limit: 20,
+      })
+      .then((d) => {
+        setParty(d.body.playlists.items);
       });
     /*
       playlists.items
@@ -82,12 +97,7 @@ function Home({ code }) {
     //   setAlbums(data.body.albums.items);
     // });
   }, [token]);
-  const smallestImage = (arr) => {
-    return arr.reduce((smallest, current) => {
-      if (smallest.height > current.height) return current;
-      return smallest;
-    }, arr[0]);
-  };
+
   useEffect(() => {
     if (!search) return setSearchResults([]);
     if (!token) return setSearchResults([]);
@@ -100,6 +110,7 @@ function Home({ code }) {
     };
     let cancel = false;
     spotify.searchTracks(search).then((res) => {
+      console.log(res);
       if (cancel) return;
       setSearchResults(
         res.body.tracks.items.map((track) => {
@@ -122,16 +133,15 @@ function Home({ code }) {
   return (
     <div className="home">
       <div className="flex">
-        {clicked ? (
-          <Songs
-            back={clickedOnAlbum}
-            spotify={spotify}
-            smallestImage={smallestImage}
-          />
-        ) : (
-          <Albums clicked={clickedOnAlbum} albums={albums} />
-        )}
-
+        <div className="colum">
+          <Albums title="Featured" width={false} albums={albums} />
+          <Playlist />
+          <Albums title="Best of Latin" width={true} albums={popular} />
+          <Albums title="Best of 2020" width={true} albums={party} />
+          <Albums title="Best of 2020" width={true} albums={party} />
+          <Albums title="Best of 2020" width={true} albums={party} />
+          <Albums title="Best of 2020" width={true} albums={party} />
+        </div>
         <History />
       </div>
 

@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { FiSettings, FiSearch, FiHome, FiBookmark } from "react-icons/fi";
-import { RiPlayListFill } from "react-icons/ri";
+import { MdLibraryMusic } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <div className="navbar">
       <li className="navbar__link">
-        <FiHome className="navbar__icon" />
-        Home
+        <Link to="/home">
+          {" "}
+          <FiHome className="navbar__icon" />
+          Home
+        </Link>
       </li>
       <li className="navbar__link">
-        <FiSearch className="navbar__icon" />
-        Search
+        <Link to="/search">
+          <FiSearch className="navbar__icon" />
+          Search
+        </Link>
       </li>
       <li className="navbar__link">
-        <RiPlayListFill className="navbar__icon" />
-        Playlist
-      </li>
-      <li className="navbar__link">
-        <FiBookmark className="navbar__icon" />
-        Favorites
+        <Link to="/library">
+          <MdLibraryMusic className="navbar__icon" />
+          Library
+        </Link>
       </li>
     </div>
   );

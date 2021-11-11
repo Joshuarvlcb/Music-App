@@ -1,89 +1,66 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
-import Playlist from "./Playlist";
+import { Link } from "react-router-dom";
 import { useAlbumContext } from "../util/Album";
 
-const Albums = ({ albums, clicked }) => {
-  const { publicData, spotify, songsData, data } = useAlbumContext();
+const Albums = ({ albums, title, width }) => {
+  const { publicData, spotify, songsData, data, gettingNamePLaylist } =
+    useAlbumContext();
   const albumsStyle = useRef();
   const [absValue, setAbsValue] = useState(0);
-  /*
-  title
-  {
-      image
-      album name
-      artist name
 
-      obj.images[1].url
-      obj.name
-    obj.artists[0]
-    }
-  
-  */
-  /*
-making btn slider
-
-on click event
-ref hook on albums
-we change the position absolute to - | +
-we want to keep a tracker of clicks
-
-if px is passed the limit then we set left = 0
-
-*/
   return (
-    <div className="column">
-      <div className="album-container">
-        <div className="row">
-          <div className="album__header">Featured</div>
+    <div className={`${width ? "albums-container-100" : "album-container"}`}>
+      <div className="row">
+        <div className="album__header">{title}</div>
 
-          <div className="arrows">
-            <BiLeftArrow
-              className="arrow"
-              onClick={() => {
-                console.log(absValue, "back");
+        <div className="arrows">
+          <BiLeftArrow
+            className="arrow"
+            onClick={() => {
+              console.log(absValue, "back");
 
-                if (absValue == 0 || absValue < 0) {
-                  setAbsValue(0);
+              if (absValue == 0 || absValue < 0) {
+                setAbsValue(0);
 
-                  return (albumsStyle.current.style.left = 0 + "px");
-                }
-                setAbsValue((prev) => {
-                  let val = prev - 180;
-                  albumsStyle.current.style.left = -val + "px";
-                  return val;
-                });
-              }}
-            />
-            <BiRightArrow
-              className="arrow"
-              onClick={() => {
-                // if (absValue == 1440 || absValue > 1500) {
-                //   setAbsValue(0);
+                return (albumsStyle.current.style.left = 0 + "px");
+              }
+              setAbsValue((prev) => {
+                let val = prev - 180;
+                albumsStyle.current.style.left = -val + "px";
+                return val;
+              });
+            }}
+          />
+          <BiRightArrow
+            className="arrow"
+            onClick={() => {
+              // if (absValue == 1440 || absValue > 1500) {
+              //   setAbsValue(0);
 
-                //   return (albumsStyle.current.style.left = 0 + "px");
-                // }
-                setAbsValue((prev) => {
-                  let val = prev + 180;
+              //   return (albumsStyle.current.style.left = 0 + "px");
+              // }
+              setAbsValue((prev) => {
+                let val = prev + 180;
 
-                  albumsStyle.current.style.left = -val + "px";
-                  return val;
-                });
-                console.log(absValue, "forward");
-              }}
-            />
-          </div>
+                albumsStyle.current.style.left = -val + "px";
+                return val;
+              });
+              console.log(absValue, "forward");
+            }}
+          />
         </div>
-        <div className="albums-container">
-          <div ref={albumsStyle} className="albums">
-            {albums !== "rap"
-              ? albums?.map((obj, i) => {
-                  const { id } = obj;
-                  //           name
-                  // images[0].url
-                  // id
-                  console.log(obj);
-                  return (
+      </div>
+      <div className={`${width ? "album-container-100" : "albums-container"}`}>
+        <div ref={albumsStyle} className="albums">
+          {albums !== "rap"
+            ? albums?.map((obj, i) => {
+                const { id } = obj;
+                //           name
+                // images[0].url
+                // id
+                return (
+                  <Link to="songs">
                     <div className="album" key={i}>
                       <img
                         onClick={() => {
@@ -107,7 +84,7 @@ if px is passed the limit then we set left = 0
                             
                             */
                           });
-                          clicked();
+                          gettingNamePLaylist(null);
                         }}
                         src={obj.images[0].url}
                         alt={obj.name}
@@ -120,6 +97,8 @@ if px is passed the limit then we set left = 0
                             image: obj.images[0].url,
                             name: obj.name,
                           });
+                          gettingNamePLaylist(null);
+
                           spotify.getPlaylistTracks(data.id).then((data) => {
                             console.log(data);
                             songsData("playlist", data.body.items);
@@ -127,20 +106,18 @@ if px is passed the limit then we set left = 0
                           
                             */
                           });
-                          clicked();
                         }}
                         className="album__name"
                       >
                         {obj.name}
                       </div>
                     </div>
-                  );
-                })
-              : ""}
-          </div>
+                  </Link>
+                );
+              })
+            : ""}
         </div>
       </div>
-      <Playlist />
     </div>
   );
 };

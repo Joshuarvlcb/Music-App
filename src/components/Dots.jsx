@@ -1,10 +1,31 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useAlbumContext } from "../util/Album";
+import { useNavigate } from "react-router-dom";
 const Dots = ({ name, data }) => {
   const [toggle, setToggle] = useState(false);
-  const { spotify, album, publicData, songsData, songs, hearts, heartsData } =
-    useAlbumContext();
+  const {
+    spotify,
+    album,
+    publicData,
+    songsData,
+    songs,
+    hearts,
+    heartsData,
+    playlist,
+    addingSongToPlaylist,
+    namePlaylist,
+    removePlaylist,
+  } = useAlbumContext();
   const dotsRef = useRef();
+  // useEffect(() => {
+  //   if (namePlaylist) {
+  //     songsData(
+  //       "custom-playlist",
+  //       playlist.find(({ name }) => name === curr.name).songs
+  //     );
+  //   }
+  // }, [playlist]);
+  const nav = useNavigate();
   useEffect(() => {
     const body = (e) => {
       if (
@@ -47,11 +68,10 @@ const Dots = ({ name, data }) => {
             className="dropdown__item"
             onClick={() => {
               if (songs.type === "playlist") {
-                console.log("play list");
-
                 spotify
                   .getArtistTopTracks(album.track.artists[0].id, "US")
                   .then((data) => {
+                    console.log(data);
                     spotify.getArtist(album.track.artists[0].id).then((d) => {
                       publicData({
                         image: d.body.images[0].url,
@@ -74,6 +94,33 @@ const Dots = ({ name, data }) => {
                       songsData("artist", data.body.tracks);
                     });
                   });
+              } else if (songs.type === "custom-playlist") {
+                console.log(album);
+                spotify
+                  .getArtistTopTracks(album.artistId, "US")
+                  .then((data) => {
+                    spotify.getArtist(album.artistId).then((d) => {
+                      publicData({
+                        image: d.body.images[0].url,
+                        name: d.body.name,
+                      });
+                      songsData("artist", data.body.tracks);
+                    });
+                  });
+              } else if (songs.type === "liked-songs") {
+                console.log(album);
+                // console.log(album);
+                spotify
+                  .getArtistTopTracks(album.artistId, "US")
+                  .then((data) => {
+                    spotify.getArtist(album.artistId).then((d) => {
+                      publicData({
+                        image: d.body.images[0].url,
+                        name: d.body.name,
+                      });
+                      songsData("artist", data.body.tracks);
+                    });
+                  });
               }
             }}
           >
@@ -82,7 +129,6 @@ const Dots = ({ name, data }) => {
           <li
             className="dropdown__item"
             onClick={() => {
-              console.log(album);
               if (songs.type === "playlist") {
                 console.log(album);
 
@@ -104,6 +150,34 @@ const Dots = ({ name, data }) => {
                   songsData("album", data.body.tracks.items);
                   console.log(data);
                 });
+              } else if (songs.type === "custom-playlist") {
+                spotify.getAlbum(album.albumId).then((data) => {
+                  publicData({
+                    image: data.body.images[0].url,
+                    name: data.body.name,
+                  });
+                  songsData("album", data.body.tracks.items);
+                });
+              } else if (songs.type === "liked-songs") {
+                spotify.getAlbum(album.albumId).then((data) => {
+                  publicData({
+                    image: data.body.images[0].url,
+                    name: data.body.name,
+                  });
+                  songsData("album", data.body.tracks.items);
+                  console.log(data);
+                });
+              } else if (songs.type == "songs") {
+                spotify.getAlbum(album.album.id).then((data) => {
+                  publicData({
+                    image: data.body.images[0].url,
+                    name: data.body.name,
+                  });
+                  songsData("album", data.body.tracks.items);
+                  console.log(data);
+                });
+                console.log(window.location.search);
+                nav("/search/songs");
               }
             }}
           >
@@ -123,8 +197,89 @@ const Dots = ({ name, data }) => {
                 : "add"
             } to liked songs`}
           </li>
-          <li className="dropdown__item" onClick={() => {}}>
-            go toadd to playlist
+          {namePlaylist ? (
+            <li
+              onClick={() => {
+                removePlaylist(namePlaylist, album.name);
+              }}
+            >
+              remove from playlist
+            </li>
+          ) : (
+            ""
+          )}
+          <li className="dropdown__item playlists-dropdown">
+            <ul className="playlists-ul">
+              {playlist.map((curr, i) => {
+                //pass playlist name append track with albumId and artist Id
+                return (
+                  <li
+                    onClick={() => {
+                      // gettingNamePLaylist(curr.name);
+                      if (songs.type === "album") {
+                        console.log(album);
+                        spotify.getTrack(album.id).then((d) => {
+                          addingSongToPlaylist(curr.name, {
+                            name: d.body.name,
+                            artist: d.body.artists[0].name,
+                            artistId: d.body.artists[0].id,
+                            image: d.body.album.images[0].url,
+                            albumId: d.body.album.id,
+                            duration: (d.body.duration_ms / 1000 / 60).toFixed(
+                              2
+                            ),
+                          });
+                        });
+                      }
+                      if (songs.type === "artist") {
+                        console.log(album);
+                        addingSongToPlaylist(curr.name, {
+                          name: album.name,
+                          artist: album.artists[0].name,
+                          artistId: album.artists[0].id,
+                          image: album.album.images[0].url,
+                          albumId: album.album.id,
+                          duration: (album.duration_ms / 1000 / 60).toFixed(2),
+                        });
+                        // addingSongToPlaylist(curr.name)
+                      }
+                      if (songs.type === "custom-playlist") {
+                        //name
+                        //image
+                        //duration
+                        //artist
+                        //artistId
+                        //albumId
+                        addingSongToPlaylist(curr.name, album);
+                        //redirect to playlists
+                      }
+                      if (songs.type === "playlist") {
+                        console.log(album);
+                        addingSongToPlaylist(curr.name, {
+                          name: album.track.name,
+                          artist: album.track.artists[0].name,
+                          artistId: album.track.artists[0].id,
+                          image: album.track.album.images[0].url,
+                          albumId: album.track.album.id,
+                          duration: (
+                            album.track.duration_ms /
+                            1000 /
+                            60
+                          ).toFixed(2),
+                        });
+                      }
+                      //'track:Alright artist:Kendrick Lamar'
+
+                      //get song data
+                      //addingSongToPlaylist
+                    }}
+                  >
+                    {curr.name}
+                  </li>
+                );
+              })}
+            </ul>
+            add to playlists
           </li>
         </ul>
       </div>

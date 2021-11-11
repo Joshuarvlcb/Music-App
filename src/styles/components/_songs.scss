@@ -3,9 +3,9 @@
 @use "../themes/defaultThemes" as *;
 .songs-page {
   margin-bottom: 130px;
+  margin-left: 280px;
 
   .banner {
-    margin-left: 220px;
     width: 40vw;
     margin-bottom: 1rem;
 
@@ -15,13 +15,11 @@
     }
   }
   .back-btn {
-    margin-left: 220px;
   }
 }
 .songs-container {
   display: flex;
   width: 40vw;
-  margin-left: 220px;
   flex-wrap: wrap;
   justify-content: flex-start;
 
@@ -83,6 +81,18 @@
         top: 10px;
         background-color: rgb(247, 59, 59);
         display: none;
+        .playlists-dropdown {
+        }
+        .playlists-ul {
+          background-color: rgb(247, 59, 59);
+          position: absolute;
+          left: -45px;
+          bottom: 0;
+          display: none;
+        }
+        .playlists-dropdown:hover > .playlists-ul {
+          display: block;
+        }
         li {
           margin-bottom: 1rem;
         }
@@ -94,4 +104,11 @@
   font-size: 1.8rem;
   margin-right: 0.3rem;
   margin-left: 0.5rem;
+}
+.name {
+  color: white;
+  text-align: center;
+}
+.description {
+  text-align: center;
 }
