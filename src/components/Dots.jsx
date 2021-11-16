@@ -15,6 +15,7 @@ const Dots = ({ name, data }) => {
     addingSongToPlaylist,
     namePlaylist,
     removePlaylist,
+    isItDoneLoading,
   } = useAlbumContext();
   const dotsRef = useRef();
   // useEffect(() => {
@@ -67,6 +68,8 @@ const Dots = ({ name, data }) => {
           <li
             className="dropdown__item"
             onClick={() => {
+              isItDoneLoading(true);
+
               if (songs.type === "playlist") {
                 spotify
                   .getArtistTopTracks(album.track.artists[0].id, "US")
@@ -129,6 +132,8 @@ const Dots = ({ name, data }) => {
           <li
             className="dropdown__item"
             onClick={() => {
+              isItDoneLoading(true);
+
               if (songs.type === "playlist") {
                 console.log(album);
 
@@ -231,7 +236,10 @@ const Dots = ({ name, data }) => {
                           });
                         });
                       }
-                      if (songs.type === "artist") {
+                      if (
+                        songs.type === "artist" ||
+                        songs.type === "searchedSongs"
+                      ) {
                         console.log(album);
                         addingSongToPlaylist(curr.name, {
                           name: album.name,
@@ -243,6 +251,7 @@ const Dots = ({ name, data }) => {
                         });
                         // addingSongToPlaylist(curr.name)
                       }
+
                       if (songs.type === "custom-playlist") {
                         //name
                         //image

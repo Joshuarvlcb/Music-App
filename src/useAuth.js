@@ -7,24 +7,27 @@ const useAuth = () => {
   const [refreshToken, setRefreshToken] = useState("");
   const [expiresIn, setExpiresIn] = useState("");
   const { code, gettingAccessToken } = useAlbumContext();
-  console.log(code);
-  useEffect(() => {
-    axios
-      .post("http://localhost:3001/login", {
-        code,
-      })
-      .then((res) => {
-        console.log(res);
-        gettingAccessToken(res.data.accessToken);
 
-        setRefreshToken(res.data.refreshToken);
-        setExpiresIn(res.data.expiresIn);
-      })
-      .catch((err) => {
-        console.error(err);
-        // window.location = "/";
-      });
-  }, []);
+  useEffect(() => {
+    if (localStorage.getItem("token") == null) {
+      axios
+        .post("http://localhost:3001/login", {
+          code,
+        })
+        .then((res) => {
+          localStorage.setItem("token", res.data.accessToken);
+
+          //if local storage code is null then set token to localstorage
+          gettingAccessToken(res.data.accessToken);
+          setRefreshToken(res.data.refreshToken);
+          setExpiresIn(res.data.expiresIn);
+        })
+        .catch((err) => {
+          console.error(err);
+          // window.location = "/";
+        });
+    }
+  });
 
   // useEffect(() => {
   //   if (!expiresIn || !refreshToken) return;
@@ -45,7 +48,7 @@ const useAuth = () => {
 
   //   return () => clearInterval(timeout);
   // }, [refreshToken, expiresIn]);
-  console.log(accessToken);
+  // console.log(accessToken);
   return accessToken;
 };
 

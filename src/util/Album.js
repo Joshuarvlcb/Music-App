@@ -3,7 +3,9 @@ import React, { useState, useContext, useReducer } from "react";
 const AlbumContext = React.createContext();
 
 export const AlbumProvider = ({ children }) => {
+  const [audio, setAudio] = useState("");
   const [data, setData] = useState({});
+  const [search, setSearch] = useState("bruno");
   const [songs, setSongs] = useState({});
   const [player, setPlayerData] = useState([]);
   const [queue, setQueue] = useState([]);
@@ -12,6 +14,7 @@ export const AlbumProvider = ({ children }) => {
   const [album, setAlbum] = useState({});
   const [toggle, setToggle] = useState(false);
   const [editToggle, setEditToggle] = useState(false);
+  const settingAudio = (songURL) => setAudio(songURL);
   const [playlist, setPlaylist] = useState([
     {
       image: "",
@@ -148,10 +151,22 @@ export const AlbumProvider = ({ children }) => {
         return state;
     }
   };
+  const [loader, setLoader] = useState(true);
+  const isItDoneLoading = (done) => {
+    setLoader(done);
+  };
   const [searchResults, dispatch] = useReducer(reducer, ["ji"]);
-
+  const [current, setCurrent] = useState("");
   const [code, setCode] = useState("");
   const [token, setToken] = useState("");
+  const getCurrentTrack = (name) => {
+    if (name == current) {
+      setCurrent("");
+      return;
+    }
+    return setCurrent(name);
+  };
+
   const gettingAccessToken = (t) => {
     console.log(t);
     if (t) {
@@ -160,13 +175,20 @@ export const AlbumProvider = ({ children }) => {
   };
   const getCode = (c) => {
     setCode(c);
-    // localStorage.setItem("code", c || localStorage.getItem("code"));
   };
   const [namePlaylist, setNamePlaylist] = useState("");
   const removePlaylist = (name, songName) => {
     setPlaylist(
       playlist.map((play) => {
         if (name === play.name) {
+          if (namePlaylist == name) {
+            setSongs({
+              type: "custom-playlist",
+              data: play.songs.filter(({ name }) => {
+                return name !== songName;
+              }),
+            });
+          }
           return {
             ...play,
             songs: play.songs.filter(({ name }) => {
@@ -179,12 +201,6 @@ export const AlbumProvider = ({ children }) => {
     );
   };
   const addingSongToPlaylist = (name, song, opt) => {
-    // if (song == {}) return;
-    /*
-      get playlistData
-      warn user is there is already the same song
-    */
-
     setPlaylist(
       playlist.map((play) => {
         if (name == play.name) {
@@ -197,19 +213,11 @@ export const AlbumProvider = ({ children }) => {
         return play;
       })
     );
-    // if (opt == "play") {
-    //   songsData(
-    //     "custom-playlist",
-    //     playlist.find(({ name }) => name === namePlaylist).songs
-    //       ? playlist.find(({ name }) => name === namePlaylist).songs
-    //       : songs
-    //   );
-    // }
   };
   const gettingNamePLaylist = (name) => {
     setNamePlaylist(name);
   };
-  const updatingPlaylist = (data) => {
+  const updatingPlaylist = (playlist, data) => {
     //check to see if playlist name is not the same as the otherones
     let obj = data;
     let index = playlist.findIndex(({ name }) => {
@@ -248,45 +256,6 @@ export const AlbumProvider = ({ children }) => {
         return obj;
       })
     );
-    /*
-  setPlaylist(playlist.map (curr)=> {
-        if(curr.name == namePlaylist){
-          return newObj
-        }
-    });
-    find the playlist we clicked and make changes to it if necessary
-
-    index = playList.findIndex({name},i) => {
-        return name == namePlaylist
-    })
-  
-    see what changes were made to the playlist
-
-      let newObj = {}  
-      if(obj.name != playList[index].name && name !== ''){
-          newObj.name = name
-      }
-      if(des !== playList[index].des && name !== ''){
-          newObj.des = des
-      }else {
-                 newObj.image = playList[index].image
-
-      }
-       if(image !== playList[index].image && image !== ''){
-          newObj.image = image
-      }else{
-         newObj.image = playList[index].image
-      }
-
-
-    })
-    setPlaylist(playlist.map (curr)=> {
-        if(curr.name == namePlaylist){
-          return newObj
-        }
-    });
-    setPlaylist by filtering
-    */
   };
   const edit = () => {
     setEditToggle(!editToggle);
@@ -335,6 +304,19 @@ export const AlbumProvider = ({ children }) => {
   const heartsData = (name, ...data) => {
     for (let arr of hearts) {
       if (arr.name == name) {
+        if (songs?.type == "liked-songs") {
+          setHearts(
+            hearts.filter((arr, i) => {
+              return arr.name !== name;
+            })
+          );
+          setSongs({
+            type: "liked-songs",
+            data: hearts.filter((arr, i) => {
+              return arr.name !== name;
+            }),
+          });
+        }
         return setHearts(
           hearts.filter((arr, i) => {
             return arr.name !== name;
@@ -360,6 +342,7 @@ export const AlbumProvider = ({ children }) => {
   //routes
   const createPlaylist = (data) => {
     setPlaylist([...playlist, data]);
+    console.log(playlist);
   };
   //styles
   //play 30s of a song
@@ -398,6 +381,14 @@ export const AlbumProvider = ({ children }) => {
         searchResults,
         dispatch,
         createPlaylist,
+        getCurrentTrack,
+        current,
+        isItDoneLoading,
+        loader,
+        search,
+        setSearch,
+        audio,
+        settingAudio,
       }}
     >
       {children}

@@ -1,51 +1,59 @@
 @use "../util/mixins" as *;
 @use "../util/variables" as *;
 @use "../themes/defaultThemes" as *;
-
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 250px;
-  height: 100vh;
-  background-color: #1a1824;
-  border-right: 1px solid #393649;
-  &__start {
-    flex: 0 0 20%;
-    @include flex-center;
+.header-con {
+  .header {
+    display: flex;
     flex-direction: column;
-    align-self: stretch;
+    align-items: center;
+    width: 250px;
+    height: 100vh;
+    background-color: #1a1824;
+    border-right: 2px solid #3936479d;
+    position: fixed;
+
+    &__start {
+      flex: 0 0 20%;
+      @include flex-center;
+      flex-direction: column;
+      align-self: stretch;
+    }
+    &__name {
+      align-self: stretch;
+      width: 200px;
+      height: 60px;
+      background-color: #98ff98;
+      margin: 1.5rem 0;
+      margin-bottom: 2.5rem;
+      @include flex-center;
+      font-size: 1.7rem;
+      text-transform: capitalize;
+      color: #394d65;
+    }
+    &__flex {
+      @include flex-center;
+      width: 220px;
+      justify-content: space-evenly;
+    }
+    .user__name {
+      color: white;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+    &__icon {
+      @include box(50px);
+      border-radius: 50%;
+      background: url(https://icon-library.com/images/guest-icon-png/guest-icon-png-29.jpg);
+      background-position: left top;
+      background-size: cover;
+    }
+    .setting {
+      margin-top: 2rem;
+      letter-spacing: 0.8px;
+    }
   }
-  &__name {
-    align-self: stretch;
-    width: 200px;
-    height: 60px;
-    background-color: #98ff98;
-    margin: 1.5rem 0;
-    margin-bottom: 2.5rem;
-    @include flex-center;
-    font-size: 1.7rem;
-    text-transform: capitalize;
-    color: #394d65;
-  }
-  &__flex {
-    @include flex-center;
-    width: 220px;
-    justify-content: space-evenly;
-  }
-  .user__name {
-    color: white;
-    font-size: 1rem;
-    letter-spacing: 0.7px;
-  }
-  &__icon {
-    @include box(50px);
-    border-radius: 50%;
-    background: url(https://cdn1-www.superherohype.com/assets/uploads/2013/11/batmane3-1.jpg);
-    background-position: top;
-    background-size: cover;
-  }
-  .setting {
-    margin-top: 2rem;
+  span {
+    text-transform: lowercase;
+    font-weight: 500;
   }
 }

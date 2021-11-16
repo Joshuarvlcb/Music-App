@@ -4,8 +4,14 @@ import { Link } from "react-router-dom";
 import { useAlbumContext } from "../util/Album";
 
 const Albums = ({ albums, title, width }) => {
-  const { publicData, spotify, songsData, data, gettingNamePLaylist } =
-    useAlbumContext();
+  const {
+    publicData,
+    spotify,
+    songsData,
+    data,
+    gettingNamePLaylist,
+    isItDoneLoading,
+  } = useAlbumContext();
   const albumsStyle = useRef();
   const [absValue, setAbsValue] = useState(0);
 
@@ -17,8 +23,8 @@ const Albums = ({ albums, title, width }) => {
         <div className="arrows">
           <BiLeftArrow
             className="arrow"
-            onClick={() => {
-              console.log(absValue, "back");
+            onClick={(e) => {
+              e.preventDefault();
 
               if (absValue == 0 || absValue < 0) {
                 setAbsValue(0);
@@ -34,12 +40,13 @@ const Albums = ({ albums, title, width }) => {
           />
           <BiRightArrow
             className="arrow"
-            onClick={() => {
-              // if (absValue == 1440 || absValue > 1500) {
-              //   setAbsValue(0);
+            onClick={(e) => {
+              e.preventDefault();
 
-              //   return (albumsStyle.current.style.left = 0 + "px");
-              // }
+              if (absValue >= 3600) {
+                setAbsValue(0);
+                return (albumsStyle.current.style.left = 0 + "px");
+              }
               setAbsValue((prev) => {
                 let val = prev + 180;
 
@@ -61,56 +68,31 @@ const Albums = ({ albums, title, width }) => {
                 // id
                 return (
                   <Link to="songs">
-                    <div className="album" key={i}>
+                    <div
+                      className="album"
+                      key={i}
+                      onClick={() => {
+                        publicData({
+                          id: id,
+                          image: obj.images[0].url,
+                          name: obj.name,
+                          description: obj.description,
+                        });
+                        spotify.getPlaylistTracks(id).then((data) => {
+                          console.log(data);
+                          songsData("playlist", data.body.items);
+                        });
+                        isItDoneLoading(true);
+                        gettingNamePLaylist(null);
+                      }}
+                    >
                       <img
-                        onClick={() => {
-                          publicData({
-                            id: id,
-                            image: obj.images[0].url,
-                            name: obj.name,
-                          });
-                          spotify.getPlaylistTracks(id).then((data) => {
-                            console.log(data);
-                            songsData("playlist", data.body.items);
-
-                            /*
-                            body.items
-                    
-                            track
-                            artist[0].name
-                            duration_ms
-                            smallestImage(album.images).url
-                            name
-                            
-                            */
-                          });
-                          gettingNamePLaylist(null);
-                        }}
                         src={obj.images[0].url}
                         alt={obj.name}
                         className="album__image"
                       />
-                      <div
-                        onClick={() => {
-                          publicData({
-                            id: id,
-                            image: obj.images[0].url,
-                            name: obj.name,
-                          });
-                          gettingNamePLaylist(null);
-
-                          spotify.getPlaylistTracks(data.id).then((data) => {
-                            console.log(data);
-                            songsData("playlist", data.body.items);
-                            /*
-                          
-                            */
-                          });
-                        }}
-                        className="album__name"
-                      >
-                        {obj.name}
-                      </div>
+                      <div className="player-image"></div>
+                      <div className="album__name">{obj.name}</div>
                     </div>
                   </Link>
                 );

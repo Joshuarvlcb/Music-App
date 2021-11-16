@@ -1,20 +1,24 @@
-import React from "react";
-import SpotifyPlayer from "react-spotify-web-playback";
+import React, { useEffect } from "react";
 import { useAlbumContext } from "../util/Album";
-const Player = ({ token, trackUri }) => {
+import ReactAudioPlayer from "react-audio-player";
+import { FaForward, FaBackward, FaPlay } from "react-icons/fa";
+const Player = () => {
   // if (!token) return null;
 
-  const { player } = useAlbumContext();
+  const { player, audio } = useAlbumContext();
+  useEffect(() => {
+    console.log("song changed");
+  }, [audio]);
   return (
-    // <SpotifyPlayer
-    //   token={token}
-    //   showSaveIcon
-    //   uris={trackUri ? [trackUri] : []}
-    // />
     <div className="player-component">
-      <img height="50px" src={player[0].image} alt="" />
-      <div className="player__name">{player[0].name}</div>
-      <div className="player__artist">{player[0].artist}</div>
+      <ReactAudioPlayer src={audio} autoPlay />
+      <div className="info">
+        <img height="50px" src={player[0].image} alt="" />
+        <div className="colum">
+          <div className="player__name">{player[0].name}</div>
+          <div className="player__artist">{player[0].artist}</div>
+        </div>
+      </div>
     </div>
   );
 };

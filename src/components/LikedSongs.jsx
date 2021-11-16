@@ -11,12 +11,13 @@ const LikedSongs = () => {
         songsData("liked-songs", hearts);
         publicData({
           image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png",
+            "https://i.pinimg.com/originals/f9/c0/f1/f9c0f13fad00a245d9c5af3740215b6e.png",
           name: "liked songs",
         });
       }}
     >
-      <div className="playlist__block"></div>
+      <div className=" heart"></div>
+      <div className="playlist-name">liked songs</div>
     </Link>
   );
 };

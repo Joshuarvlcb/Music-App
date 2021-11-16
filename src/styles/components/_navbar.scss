@@ -10,15 +10,26 @@
   width: 170px;
   justify-content: space-evenly;
   &__link {
+    height: 30px;
     @include flex-center;
     cursor: pointer;
     list-style: none;
-    width: 80px;
+    width: 130px;
+    margin: 0;
+    padding: 0;
     justify-content: space-between;
     color: rgb(223, 223, 223);
+    font-size: 0.9rem;
+    letter-spacing: 0.8px;
+    align-items: flex-end;
+    div {
+      display: flex;
+      height: 25px;
+      align-items: flex-end;
+    }
   }
   &__icon {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     color: rgb(230, 230, 230);
   }
 }

@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAlbumContext } from "../util/Album";
+import { CgClose } from "react-icons/cg";
+
 const Edit = () => {
   const editRef = useRef();
-  const { edit, updatingPlaylist, data, publicData } = useAlbumContext();
+  const { edit, updatingPlaylist, data, publicData, playlist } =
+    useAlbumContext();
   /*
     get image get name get description if its not empty
 
@@ -20,8 +23,9 @@ const Edit = () => {
         reader.readAsDataURL(editRef.current.files[0]);
       }
     });
-    () => {
-      upload.removeEventListener("change", upload);
+    return () => {
+      if (editRef?.current)
+        editRef.current.removeEventListener("change", upload);
     };
   }, []);
   return (
@@ -31,12 +35,20 @@ const Edit = () => {
           action=""
           onSubmit={(e) => {
             e.preventDefault();
+            console.log(playlist);
+            if (
+              playlist.find(({ name: n }) => {
+                return n == name;
+              })
+            ) {
+              return new Error("same name");
+            }
             // publicData({
             //   image: image || data.image,
             //   name: name || data.name,
             //   description: description || data.description,
             // });
-            updatingPlaylist({
+            updatingPlaylist(playlist, {
               image: image || data.image,
               name: name || data.name,
               description: description || data.description,
@@ -49,20 +61,33 @@ const Edit = () => {
             edit();
           }}
         >
-          <input ref={editRef} type="file" />
-          <input
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-            type="text"
-          />
-          <input
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            type="text"
-          />
-          <button type="submit">submit</button>
+          <h2 className="edit-title">Edit Details</h2>
+          <div className="edit-row">
+            <input ref={editRef} type="file" className="file" />
 
-          <img src={image} height="50px" alt="" />
+            <div className="column">
+              <input
+                className="input"
+                placeholder="Name"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                type="text"
+              />
+              <textarea
+                placeholder="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                rows="4"
+                cols="50"
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="submit">
+            Save
+          </button>
+          <CgClose className="close" onClick={edit} />
+          <img src={image} alt="" />
         </form>
       </div>
     </div>

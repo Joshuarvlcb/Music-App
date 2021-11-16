@@ -13,7 +13,7 @@ const Library = ({ obj, i }) => {
           publicData({
             image:
               obj.image ||
-              "https://images.macrumors.com/t/vMbr05RQ60tz7V_zS5UEO9SbGR0=/1600x900/smart/article-new/2018/05/apple-music-note.jpg",
+              "https://i.pinimg.com/564x/a2/9b/ab/a29babcb44d1902fdcc45aa56c38a644.jpg",
             name: obj.name || "playlist" + " " + (i + 1),
             description: obj.description,
           });

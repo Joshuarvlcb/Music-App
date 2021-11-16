@@ -1,3 +1,59 @@
 .library {
-  margin-left: 500px;
+  margin-left: 280px;
+  &__header {
+    color: white;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-top: 2rem;
+  }
+  .library-con {
+    display: flex;
+    flex-wrap: wrap;
+
+    .playlist-name {
+      width: 120px;
+      color: #98ff98;
+      overflow: hidden;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      letter-spacing: 0.4px;
+      margin-top: 0.2rem;
+      font-weight: bold;
+    }
+  }
+  .create {
+    background-image: url("https://cdn4.vectorstock.com/i/1000x1000/74/68/plus-icon-isolated-on-white-background-add-vector-30687468.jpg");
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    margin-right: 0.8rem;
+    margin-top: 1rem;
+  }
+  .heart {
+    background-image: url("https://i.pinimg.com/originals/f9/c0/f1/f9c0f13fad00a245d9c5af3740215b6e.png");
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    width: 150px;
+    height: 150px;
+    margin-right: 0.8rem;
+  }
+  .back {
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 263px;
+  }
+}
+.margin-bottom {
+  margin-bottom: 4rem;
 }

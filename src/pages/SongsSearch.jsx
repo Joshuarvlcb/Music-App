@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Dots from "../components/Dots";
 import Heart from "../components/Heart";
-import { BiPlay } from "react-icons/bi";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
 
 import { useNavigate } from "react-router-dom";
 import { useAlbumContext } from "../util/Album";
 
 const searchedSongs = () => {
-  const { searchResults, playerData, heartsData, gettingAlbum } =
-    useAlbumContext();
+  const {
+    searchResults,
+    playerData,
+    heartsData,
+    gettingAlbum,
+    isItDoneLoading,
+    songsData,
+  } = useAlbumContext();
   const [songs, setSongs] = useState([]);
   useEffect(() => {
     if (searchResults instanceof Promise)
@@ -18,14 +23,24 @@ const searchedSongs = () => {
   const nav = useNavigate();
   return (
     <div>
-      <button onClick={() => nav(-1)}>back</button>
-      <div className="songs-container">
-        {songs?.map((obj, i) => {
+      <IoArrowBackCircleSharp
+        className="back"
+        onClick={() => {
+          nav(-1);
+        }}
+      />{" "}
+      <div className="searchedSongs-container ">
+        <h2 className="songs-title">All songs</h2>
+        {songs?.map((obj, i, arr) => {
+          i == Math.floor(arr.length / 2)
+            ? setTimeout(() => isItDoneLoading(false), 500)
+            : "";
           return (
             <div
               className="song"
               key={i}
               onClick={() => {
+                songsData("searchedSongs", null);
                 playerData({
                   image: obj.album?.images[0].url,
                   artist: obj?.artist,
@@ -52,7 +67,7 @@ const searchedSongs = () => {
                 <div
                   className="h"
                   onClick={() => {
-                    heartsData({
+                    heartsData(obj?.name, {
                       image: obj.album?.images[0].url,
                       artist: obj?.artist,
                       name: obj?.name,
@@ -84,6 +99,7 @@ const searchedSongs = () => {
           );
         })}
       </div>
+      <div className="margin-bottom"></div>
     </div>
   );
 };

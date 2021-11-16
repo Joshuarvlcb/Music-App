@@ -1,0 +1,17 @@
+.page {
+  margin-left: 280px;
+  .title {
+    color: white;
+    margin-top: 3rem;
+    text-transform: capitalize;
+  }
+  .page-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .album-name {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
