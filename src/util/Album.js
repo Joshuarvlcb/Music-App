@@ -22,15 +22,6 @@ export const AlbumProvider = ({ children }) => {
       description: "hello",
       songs: [
         {
-          artist: "Olivia Rodrigo",
-          duration: "3.82",
-          image:
-            "https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a",
-          name: "traitor",
-          artistId: "1McMsnEElThX1knmY4oliG",
-          albumId: "6s84u2TUpR3wdUv4NgKA2j",
-        },
-        {
           artist: "Dua Lipa",
           duration: "3.38",
           image:
@@ -38,85 +29,19 @@ export const AlbumProvider = ({ children }) => {
           name: "Levitating (feat. DaBaby)",
           artistId: "6M2wZ9GZgrQXHCFfjv46we",
           albumId: "04m06KhJUuwe1Q487puIud",
+          preview:
+            "https://p.scdn.co/mp3-preview/cc617f669fd1e3ee33a4ac0c66346fefd15286e7?cid=cb2ed77176254eebbdd48f2c8b025d1b",
         },
         {
-          artist: "Blxst",
-          duration: "2.69",
+          artist: "Jason Derulo",
+          duration: "2.20",
           image:
-            "https://i.scdn.co/image/ab67616d0000b2733ff60cb3e14bc0a2a2b68020",
-          name: "Chosen (feat. Ty ",
-          artistId: "4qXC0i02bSFstECuXP2ZpL",
-          albumId: "7AwrgenNcTAJlJF3pKL0Qr",
-        },
-        {
-          artist: "Camila Cabello",
-          duration: "2.75",
-          image:
-            "https://i.scdn.co/image/ab67616d0000b273d24bb6aa36842e45bdd3d1cc",
-          name: "Don't Go Yet",
-          albumId: "4gxhWdfO9qAogokjIc2bPZ",
-          artistId: "4nDoRrQiYLoBzwC5BhVJzF",
-        },
-        {
-          artist: "Drake",
-          duration: "4.29",
-          image:
-            "https://i.scdn.co/image/ab67616d0000b273cd945b4e3de57edd28481a3f",
-          name: "Way 2 Sexy (with Future & Young Thug)",
-          albumId: "3SpBlxme9WbeQdI9kx7KAV",
-          artistId: "3TVXtAsR1Inumwj472S9r4",
-        },
-      ],
-    },
-    {
-      image: "",
-      name: "playlist 2",
-      description: "hello",
-      songs: [
-        {
-          artist: "Olivia Rodrigo",
-          duration: "3.82",
-          image:
-            "https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a",
-          name: "traitor",
-          artistId: "1McMsnEElThX1knmY4oliG",
-          albumId: "6s84u2TUpR3wdUv4NgKA2j",
-        },
-        {
-          artist: "Dua Lipa",
-          duration: "3.38",
-          image:
-            "https://i.scdn.co/image/ab67616d0000b27349caa4fc6f962057ba65576a",
-          name: "Levitating (feat. DaBaby)",
-          artistId: "6M2wZ9GZgrQXHCFfjv46we",
-          albumId: "04m06KhJUuwe1Q487puIud",
-        },
-        {
-          artist: "Blxst",
-          duration: "2.69",
-          image:
-            "https://i.scdn.co/image/ab67616d0000b2733ff60cb3e14bc0a2a2b68020",
-          name: "Chosen (feat. Ty ",
-          artistId: "4qXC0i02bSFstECuXP2ZpL",
-          albumId: "7AwrgenNcTAJlJF3pKL0Qr",
-        },
-        {
-          artist: "Camila Cabello",
-          duration: "2.75",
-          image:
-            "https://i.scdn.co/image/ab67616d0000b273d24bb6aa36842e45bdd3d1cc",
-          name: "Don't Go Yet",
-          albumId: "4gxhWdfO9qAogokjIc2bPZ",
-          artistId: "4nDoRrQiYLoBzwC5BhVJzF",
-        },
-        {
-          artist: "Drake",
-          duration: "4.29",
-          image:
-            "https://i.scdn.co/image/ab67616d0000b273cd945b4e3de57edd28481a3f",
-          name: "Way 2 Sexy (with Future & Young Thug)",
-          albumId: "3SpBlxme9WbeQdI9kx7KAV",
-          artistId: "3TVXtAsR1Inumwj472S9r4",
+            "https://i.scdn.co/image/ab67616d0000b2738544aa5ba43894b7103ec757",
+          name: "Acapulco",
+          albumId: "76f2Wq7QxiHImxzsYwiXWW",
+          artistId: "07YZf4WDAMNwqr4jfgOZ8y",
+          preview:
+            "https://p.scdn.co/mp3-preview/6291f886d5e33da6f0228a0ca664e0fa194f9558?cid=cb2ed77176254eebbdd48f2c8b025d1b",
         },
       ],
     },

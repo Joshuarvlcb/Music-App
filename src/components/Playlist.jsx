@@ -9,7 +9,7 @@ const Playlist = () => {
   return (
     <div className="playlist">
       <div className="row">
-        <div className="playlist__header">Playlist</div>
+        <div className="playlist__header">Playlists</div>
         <div className="arrows">
           <BiLeftArrow
             className="arrow"

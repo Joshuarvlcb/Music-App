@@ -270,6 +270,7 @@ const Dots = ({ name, data }) => {
                           artistId: album.track.artists[0].id,
                           image: album.track.album.images[0].url,
                           albumId: album.track.album.id,
+                          preview:album.track.preview_url,
                           duration: (
                             album.track.duration_ms /
                             1000 /

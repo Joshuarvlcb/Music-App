@@ -10,12 +10,23 @@
   left: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   bottom: 0;
   .info {
     display: flex;
-    margin-left: 15rem;
     img {
       margin-right: 3rem;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      margin-left: 2.5rem;
+      .control {
+        color: white;
+        margin-right: 1rem;
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
     }
   }
   .colum {
@@ -24,5 +35,4 @@
     justify-content: center;
     color: white;
   }
-  //   margin-top: 20vh;
 }

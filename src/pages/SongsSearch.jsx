@@ -13,6 +13,7 @@ const searchedSongs = () => {
     heartsData,
     gettingAlbum,
     isItDoneLoading,
+    settingAudio,
     songsData,
   } = useAlbumContext();
   const [songs, setSongs] = useState([]);
@@ -46,7 +47,9 @@ const searchedSongs = () => {
                   artist: obj?.artist,
                   name: obj?.name,
                   duration: (obj?.duration_ms / 1000 / 60).toFixed(2),
+                  preview: obj?.preview_url,
                 });
+                settingAudio(obj?.preview_url);
               }}
             >
               <div className="close">

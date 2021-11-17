@@ -516,14 +516,25 @@ body {
   left: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   bottom: 0;
 }
 .player-component .info {
   display: flex;
-  margin-left: 15rem;
 }
 .player-component .info img {
   margin-right: 3rem;
+}
+.player-component .info .controls {
+  display: flex;
+  align-items: center;
+  margin-left: 2.5rem;
+}
+.player-component .info .controls .control {
+  color: white;
+  margin-right: 1rem;
+  font-size: 1.4rem;
+  cursor: pointer;
 }
 .player-component .colum {
   display: flex;
@@ -626,7 +637,7 @@ body {
 .albums-container-100 .album-container-100 {
   display: flex;
   width: 200vw;
-  height: 200px;
+  height: 235px;
   position: relative;
 }
 .albums-container-100 .albums {
@@ -636,6 +647,9 @@ body {
   transition: all 0.3s linear;
   width: 100%;
   height: 100%;
+}
+.albums-container-100:last-child {
+  margin-bottom: 7rem;
 }
 .albums-container-100 .album {
   width: 180px;
@@ -850,6 +864,27 @@ body {
   font-size: 2rem;
   letter-spacing: 2px;
   margin-bottom: 1rem;
+}
+.history .q {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  background-color: #201f279a;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  cursor: pointer;
+}
+.history .q__name {
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.history .q .row {
+  display: flex;
+  align-items: center;
 }
 
 .playlist {

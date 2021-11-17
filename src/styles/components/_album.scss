@@ -34,7 +34,8 @@
   .album-container-100 {
     display: flex;
     width: 200vw;
-    height: 200px;
+    height: 235px;
+
     position: relative;
   }
   .albums {
@@ -45,6 +46,9 @@
 
     width: 100%;
     height: 100%;
+  }
+  &:last-child {
+    margin-bottom: 7rem;
   }
   .album {
     width: 180px;

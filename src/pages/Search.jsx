@@ -11,6 +11,8 @@ const Search = () => {
     isItDoneLoading,
     search,
     setSearch,
+    settingAudio,
+    playerData,
   } = useAlbumContext();
   const nav = useNavigate();
 
@@ -103,7 +105,20 @@ const Search = () => {
           {tracks?.map((obj, i, arr) => {
             //get player
             return (
-              <div className="album" key={i}>
+              <div
+                className="album"
+                key={i}
+                onClick={() => {
+                  playerData({
+                    image: obj?.album?.images[0]?.url,
+                    artist: obj?.artists["0"]?.name,
+                    name: obj?.name,
+                    duration: (obj?.duration_ms / 1000 / 60).toFixed(2),
+                    preview:obj.preview_url
+                  });
+                  settingAudio(obj.preview_url);
+                }}
+              >
                 <img
                   src={obj.album?.images[0]?.url}
                   alt={obj.name}

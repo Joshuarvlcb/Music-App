@@ -56,6 +56,8 @@ const Album = () => {
               i == Math.floor(arr.length / 2)
                 ? setTimeout(() => isItDoneLoading(false), 500)
                 : "";
+              console.log(obj.track);
+
               return (
                 <div
                   className="song"
@@ -73,6 +75,7 @@ const Album = () => {
                         duration: (obj?.track?.duration_ms / 1000 / 60).toFixed(
                           2
                         ),
+                        preview: obj.track?.preview_url,
                       }}
                     />
                     <img
@@ -104,6 +107,7 @@ const Album = () => {
                           ).toFixed(2),
                           albumId: obj?.track?.album?.id,
                           artistId: obj?.track?.artists[0]?.id,
+                          preview: obj.track?.preview_url,
                         });
                       }}
                     >
@@ -164,8 +168,13 @@ const Album = () => {
             i == Math.floor(arr.length / 2)
               ? setTimeout(() => isItDoneLoading(false), 500)
               : "";
+
             return (
-              <div className="song" key={i}>
+              <div
+                className="song"
+                key={i}
+                onClick={() => settingAudio(obj?.preview_url)}
+              >
                 <div className="close">
                   <Music
                     name={obj?.name}
@@ -175,6 +184,7 @@ const Album = () => {
                       artist: obj?.artists["0"]?.name,
                       name: obj?.name,
                       duration: (obj?.duration_ms / 1000 / 60).toFixed(2),
+                      preview: obj?.preview_url,
                     }}
                   />
                   {/* <img
@@ -205,6 +215,7 @@ const Album = () => {
                           duration: (body?.duration_ms / 1000 / 60).toFixed(2),
                           albumId: body?.album?.id,
                           artistId: body?.artists[0]?.id,
+                          preview: obj?.preview_url,
                         });
                       });
                     }}
@@ -317,8 +328,13 @@ const Album = () => {
             i == Math.floor(arr.length / 2)
               ? setTimeout(() => isItDoneLoading(false), 500)
               : "";
+            console.log(obj);
             return (
-              <div className="song" key={i}>
+              <div
+                className="song"
+                key={i}
+                onClick={() => settingAudio(obj.preview)}
+              >
                 <div className="close">
                   <Music
                     name={obj?.name}
@@ -327,7 +343,8 @@ const Album = () => {
                       image: data.image,
                       artist: obj?.artist,
                       name: obj?.name,
-                      duration: (obj?.duration_ms / 1000 / 60).toFixed(2),
+                      duration: obj.duration,
+                      preview: obj?.preview,
                     }}
                   />
                   <div className="col">
@@ -348,6 +365,7 @@ const Album = () => {
                         duration: obj?.duration,
                         artistId: obj?.artistId,
                         albumId: obj?.albumId,
+                        preview: obj?.preview,
                       });
                     }}
                   >
@@ -446,7 +464,6 @@ const Album = () => {
       </div>
     );
   } else if (songs.type == "liked-songs") {
-    console.log("liked songs");
     return (
       <div className="songs-page">
         <div className="banner-content">
@@ -477,8 +494,15 @@ const Album = () => {
             i == Math.floor(arr.length / 2)
               ? setTimeout(() => isItDoneLoading(false), 500)
               : "";
+
             return (
-              <div className="song" key={i}>
+              <div
+                className="song"
+                key={i}
+                onClick={() => {
+                  settingAudio(obj?.preview);
+                }}
+              >
                 <div className="close">
                   <Music
                     name={obj?.name}
@@ -487,7 +511,8 @@ const Album = () => {
                       image: data.image,
                       artist: obj?.artist,
                       name: obj?.name,
-                      duration: (obj?.duration_ms / 1000 / 60).toFixed(2),
+                      duration: obj?.duration,
+                      preview: obj?.preview,
                     }}
                   />{" "}
                   <div className="col">
