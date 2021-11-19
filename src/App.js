@@ -31,6 +31,9 @@ function App() {
     {
       localStorage.getItem("token") ? nav("/home") : "loading";
     }
+    {
+      !localStorage.getItem("token") ? nav("/login") : "loading";
+    }
   }, [token]);
 
   return (

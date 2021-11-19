@@ -7,7 +7,7 @@ import { useAlbumContext } from "../util/Album";
 import Playlist from "../components/Playlist";
 
 const spotify = new SpotifyWebApi({
-  clientId: "cb2ed77176254eebbdd48f2c8b025d1b",
+  clientId: "39994493cde1422d91170d0f174a5125",
 });
 
 function Home() {
