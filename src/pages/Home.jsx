@@ -7,7 +7,7 @@ import { useAlbumContext } from "../util/Album";
 import Playlist from "../components/Playlist";
 
 const spotify = new SpotifyWebApi({
-  clientId: "cb2ed77176254eebbdd48f2c8b025d1b",
+  clientId: "39994493cde1422d91170d0f174a5125",
 });
 
 function Home() {
@@ -26,14 +26,13 @@ function Home() {
       initSpotify(spotify);
     }
   }, []);
+  console.log(spotify)
 
   useEffect(() => {
-    // i have to request a get search the album we pass value when we click in new page
     if (localStorage.getItem("token") == null) return;
+
     spotify
-      .getPlaylistsForCategory("pop", {
-        limit: 20,
-      })
+      .getPlaylistsForCategory("pop")
       .then((d) => {
         console.log(d.body);
         setAlbums(d.body.playlists.items);
@@ -64,11 +63,11 @@ function Home() {
       });
   }, []);
   useEffect(() => {
-    if (mood.length !== 0) {
-      setTimeout(() => {
-        isItDoneLoading(false);
-      }, 500);
-    }
+
+    setTimeout(() => {
+      isItDoneLoading(false);
+    }, 500);
+
   });
 
   return (

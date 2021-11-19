@@ -23,7 +23,7 @@ const useAuth = () => {
           setExpiresIn(res.data.expiresIn);
         })
         .catch((err) => {
-          console.error(err);
+          console.log(err);
           // window.location = "/";
         });
     }
