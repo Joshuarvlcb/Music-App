@@ -32,10 +32,6 @@ const Header = () => {
             </div> */}
 
         <Navbar />
-        <li className="navbar__link setting">
-          <FiSettings className="navbar__icon" />
-          <div>Setting</div>
-        </li>
       </div>
     </div>
   );

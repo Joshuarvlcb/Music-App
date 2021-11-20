@@ -52,3 +52,9 @@
     color: gray;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .home {
+    margin-left: 0px;
+  }
+}

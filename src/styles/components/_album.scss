@@ -48,7 +48,7 @@
     height: 100%;
   }
   &:last-child {
-    margin-bottom: 7rem;
+    margin-bottom: 6rem;
   }
   .album {
     width: 180px;
@@ -251,5 +251,19 @@
   }
   &__artist {
     color: #98ff98;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .albums-container-100 {
+    margin-left: 0px;
+    margin-right: 0px;
+    &:last-child {
+      margin-bottom: 180px;
+    }
+  }
+  .album-container {
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }

@@ -1,6 +1,7 @@
 @use "../util/mixins" as *;
 @use "../util/variables" as *;
 @use "../themes/defaultThemes" as *;
+
 .header-con {
   .header {
     display: flex;
@@ -55,5 +56,35 @@
   span {
     text-transform: lowercase;
     font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .header-con {
+    .header {
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 150px;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      background-color: #39354d;
+      z-index: 1000000;
+    }
+    
+
+    .header__start {
+      display: none;
+    }
+    .header__name {
+      display: none;
+    }
+    .user__name {
+      display: none;
+    }
+    &__icon {
+      display: none;
+    }
   }
 }

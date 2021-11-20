@@ -15,3 +15,13 @@
     overflow: hidden;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .page {
+    margin-left: 50px;
+    .back {
+      left: 30px;
+    }
+    // padding-left: 5.7rem;
+  }
+}

@@ -49,3 +49,10 @@
 .margin-top {
   margin-top: 2rem;
 }
+
+@media screen and (max-width: 900px) {
+  .search {
+    margin-left: 45px;
+    // padding-left: 5.7rem;
+  }
+}

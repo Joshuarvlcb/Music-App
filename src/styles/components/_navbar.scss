@@ -5,7 +5,8 @@
 .navbar {
   display: flex;
   flex-direction: column;
-  height: 40vh;
+  height: 55vh;
+  margin-top: 1rem;
   align-items: center;
   width: 170px;
   justify-content: space-evenly;
@@ -31,5 +32,25 @@
   &__icon {
     font-size: 1.4rem;
     color: rgb(230, 230, 230);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .navbar {
+    flex-direction: row;
+    width: 100vw;
+    height: 150px;
+    margin-top: 0;
+    &__link {
+      align-items: center;
+      justify-content: center;
+    }
+    .text {
+      display: none;
+    }
+    &__icon {
+      font-size: 1.8rem;
+      color: rgb(230, 230, 230);
+    }
   }
 }

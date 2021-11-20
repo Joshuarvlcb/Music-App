@@ -32,3 +32,12 @@
     }
   }
 }
+
+@media screen and(max-width:900px) {
+  .history {
+    display: none;
+    &__title {
+      display: none;
+    }
+  }
+}

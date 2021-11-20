@@ -455,3 +455,15 @@
     }
   }
 }
+
+@media screen and (max-width: 900px) {
+  .songs-page,
+  .searchedSongs-container {
+    margin-left: 0px;
+    width: 100vw;
+
+    .back {
+      left: 30px;
+    }
+  }
+}

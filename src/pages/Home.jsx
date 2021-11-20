@@ -26,17 +26,15 @@ function Home() {
       initSpotify(spotify);
     }
   }, []);
-  console.log(spotify)
+  console.log(spotify);
 
   useEffect(() => {
     if (localStorage.getItem("token") == null) return;
 
-    spotify
-      .getPlaylistsForCategory("pop")
-      .then((d) => {
-        console.log(d.body);
-        setAlbums(d.body.playlists.items);
-      });
+    spotify.getPlaylistsForCategory("pop").then((d) => {
+      console.log(d.body);
+      setAlbums(d.body.playlists.items);
+    });
     spotify
       .getPlaylistsForCategory("latin", {
         limit: 20,
@@ -63,11 +61,9 @@ function Home() {
       });
   }, []);
   useEffect(() => {
-
     setTimeout(() => {
       isItDoneLoading(false);
     }, 500);
-
   });
 
   return (

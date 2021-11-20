@@ -15,7 +15,7 @@ const NavBar = () => {
       >
         {" "}
         <FiHome className="navbar__icon" />
-        <div> Home</div>
+        <div className="text"> Home</div>
       </Link>
       <Link
         className="navbar__link"
@@ -23,11 +23,15 @@ const NavBar = () => {
         onClick={() => isItDoneLoading(true)}
       >
         <FiSearch className="navbar__icon" />
-        <div> Search</div>
+        <div className="text"> Search</div>
       </Link>
       <Link className="navbar__link" to="/library">
         <MdLibraryMusic className="navbar__icon" />
-        <div>Library</div>
+        <div className="text">Library</div>
+      </Link>
+      <Link className="navbar__link" to="/home">
+        <FiSettings className="navbar__icon" />
+        <div className="text">Setting</div>
       </Link>
     </div>
   );

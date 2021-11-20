@@ -5,6 +5,7 @@
     font-size: 2rem;
     letter-spacing: 2px;
     margin-top: 2rem;
+    margin-left: 0.8rem;
   }
   .library-con {
     display: flex;
@@ -18,6 +19,8 @@
       white-space: nowrap;
       letter-spacing: 0.4px;
       margin-top: 0.2rem;
+      margin-left: 0.8rem;
+
       font-weight: bold;
     }
   }
@@ -31,6 +34,7 @@
     width: 150px;
     height: 150px;
     margin-right: 0.8rem;
+    margin-left: 0.8rem;
     margin-top: 1rem;
   }
   .heart {
@@ -44,6 +48,7 @@
     width: 150px;
     height: 150px;
     margin-right: 0.8rem;
+    margin-left: 0.8rem;
   }
   .back {
     color: white;
@@ -56,4 +61,17 @@
 }
 .margin-bottom {
   margin-bottom: 4rem;
+}
+
+@media screen and (max-width: 900px) {
+  .library {
+    margin: 0;
+  }
+  .library-con {
+    min-width: 100vw;
+    margin: 0 auto;
+  }
+  .margin-bottom {
+    margin-bottom: 170px;
+  }
 }

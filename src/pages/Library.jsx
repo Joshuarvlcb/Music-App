@@ -65,6 +65,7 @@ const Library = () => {
         })}
         <LikedSongs />
       </div>
+      <div className="margin-bottom"></div>
     </div>
   );
 };

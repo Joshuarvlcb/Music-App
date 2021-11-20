@@ -16,7 +16,13 @@ const Albums = ({ albums, title, width }) => {
   const [absValue, setAbsValue] = useState(0);
 
   return (
-    <div className={`${width ? "albums-container-100" : "album-container"}`}>
+    <div
+      className={`${
+        window.innerWidth <= 900 || width
+          ? "albums-container-100"
+          : "album-container"
+      }`}
+    >
       <div className="row">
         <div className="album__header">{title}</div>
 

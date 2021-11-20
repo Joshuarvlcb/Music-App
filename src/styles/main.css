@@ -287,7 +287,7 @@ body {
   color: #265e97;
   line-height: 1.5;
   font-size: 0.75rem;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 @media only screen and (min-width: 1024) {
@@ -324,6 +324,17 @@ body {
   outline: none;
 }
 
+@media screen and (max-width: 900px) {
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+  }
+  .column .home {
+    margin-right: 0;
+  }
+}
 .header-con .header {
   display: flex;
   flex-direction: column;
@@ -385,6 +396,31 @@ body {
   font-weight: 500;
 }
 
+@media screen and (max-width: 900px) {
+  .header-con .header {
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 150px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #39354d;
+    z-index: 1000000;
+  }
+  .header-con .header__start {
+    display: none;
+  }
+  .header-con .header__name {
+    display: none;
+  }
+  .header-con .user__name {
+    display: none;
+  }
+  .header-con__icon {
+    display: none;
+  }
+}
 .search__container {
   margin-bottom: 0.2rem;
   position: relative;
@@ -419,7 +455,8 @@ body {
 .navbar {
   display: flex;
   flex-direction: column;
-  height: 40vh;
+  height: 55vh;
+  margin-top: 1rem;
   align-items: center;
   width: 170px;
   justify-content: space-evenly;
@@ -450,6 +487,25 @@ body {
   color: #e6e6e6;
 }
 
+@media screen and (max-width: 900px) {
+  .navbar {
+    flex-direction: row;
+    width: 100vw;
+    height: 150px;
+    margin-top: 0;
+  }
+  .navbar__link {
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar .text {
+    display: none;
+  }
+  .navbar__icon {
+    font-size: 1.8rem;
+    color: #e6e6e6;
+  }
+}
 .main-con {
   display: flex;
 }
@@ -508,6 +564,11 @@ body {
   color: gray;
 }
 
+@media screen and (max-width: 900px) {
+  .home {
+    margin-left: 0px;
+  }
+}
 .player-component {
   width: 100vw;
   background-color: #190c1d;
@@ -649,7 +710,7 @@ body {
   height: 100%;
 }
 .albums-container-100:last-child {
-  margin-bottom: 7rem;
+  margin-bottom: 6rem;
 }
 .albums-container-100 .album {
   width: 180px;
@@ -853,6 +914,20 @@ body {
   color: #98ff98;
 }
 
+@media screen and (max-width: 900px) {
+  .albums-container-100 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .albums-container-100:last-child {
+    margin-bottom: 180px;
+  }
+
+  .album-container {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
 .history {
   width: 30vw;
   height: 400px;
@@ -887,6 +962,14 @@ body {
   align-items: center;
 }
 
+@media screen and (max-width: 900px) {
+  .history {
+    display: none;
+  }
+  .history__title {
+    display: none;
+  }
+}
 .playlist {
   min-width: 40vw;
   margin-left: 250px;
@@ -901,6 +984,7 @@ body {
   letter-spacing: 0.4px;
   margin-top: 0.2rem;
   font-weight: bold;
+  margin-left: 0.8rem;
 }
 .playlist .playlists {
   display: flex;
@@ -932,6 +1016,7 @@ body {
   height: 150px;
   background-color: #181524;
   margin-right: 0.8rem;
+  margin-left: 0.8rem;
 }
 .playlist__image {
   margin: 0.3rem;
@@ -940,6 +1025,15 @@ body {
   height: 60px;
 }
 
+@media screen and (max-width: 900px) {
+  .playlist {
+    margin-left: 0px;
+    width: 70vw;
+  }
+  .playlist .row {
+    width: 100%;
+  }
+}
 .songs-page {
   margin-bottom: 130px;
   margin-left: 250px;
@@ -1399,6 +1493,17 @@ body {
   border-bottom: 1px solid white;
 }
 
+@media screen and (max-width: 900px) {
+  .songs-page,
+.searchedSongs-container {
+    margin-left: 0px;
+    width: 100vw;
+  }
+  .songs-page .back,
+.searchedSongs-container .back {
+    left: 30px;
+  }
+}
 .heart {
   padding-top: 2em;
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/66955/web_heart_animation.png");
@@ -1506,6 +1611,7 @@ body {
   font-size: 2rem;
   letter-spacing: 2px;
   margin-top: 2rem;
+  margin-left: 0.8rem;
 }
 .library .library-con {
   display: flex;
@@ -1519,6 +1625,7 @@ body {
   white-space: nowrap;
   letter-spacing: 0.4px;
   margin-top: 0.2rem;
+  margin-left: 0.8rem;
   font-weight: bold;
 }
 .library .create {
@@ -1531,6 +1638,7 @@ body {
   width: 150px;
   height: 150px;
   margin-right: 0.8rem;
+  margin-left: 0.8rem;
   margin-top: 1rem;
 }
 .library .heart {
@@ -1544,6 +1652,7 @@ body {
   width: 150px;
   height: 150px;
   margin-right: 0.8rem;
+  margin-left: 0.8rem;
 }
 .library .back {
   color: white;
@@ -1558,6 +1667,20 @@ body {
   margin-bottom: 4rem;
 }
 
+@media screen and (max-width: 900px) {
+  .library {
+    margin: 0;
+  }
+
+  .library-con {
+    min-width: 100vw;
+    margin: 0 auto;
+  }
+
+  .margin-bottom {
+    margin-bottom: 170px;
+  }
+}
 .login-con {
   height: 100vh;
   width: 100vw;
@@ -1688,6 +1811,11 @@ body {
   margin-top: 2rem;
 }
 
+@media screen and (max-width: 900px) {
+  .search {
+    margin-left: 45px;
+  }
+}
 .page {
   margin-left: 280px;
 }
@@ -1704,4 +1832,13 @@ body {
   width: 200px;
   white-space: nowrap;
   overflow: hidden;
+}
+
+@media screen and (max-width: 900px) {
+  .page {
+    margin-left: 50px;
+  }
+  .page .back {
+    left: 30px;
+  }
 }/*# sourceMappingURL=main.css.map */
