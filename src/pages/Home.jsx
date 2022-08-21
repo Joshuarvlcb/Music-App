@@ -29,14 +29,14 @@ function Home() {
   console.log(spotify);
 
   useEffect(() => {
-    if (localStorage.getItem("token") == null) return;
+    if (!localStorage.getItem("token")) return;
 
     spotify.getPlaylistsForCategory("pop").then((d) => {
       console.log(d.body);
       setAlbums(d.body.playlists.items);
     });
     spotify
-      .getPlaylistsForCategory("latin", {
+      .getPlaylistsForCategory("mood", {
         limit: 20,
       })
       .then((d) => {
@@ -48,6 +48,7 @@ function Home() {
       })
       .then((d) => {
         setParty(d.body.playlists.items);
+     
       });
     spotify
       .getPlaylistsForCategory("mood", {
