@@ -29,25 +29,25 @@ const useAuth = () => {
     }
   });
 
-  // useEffect(() => {
-  //   if (!expiresIn || !refreshToken) return;
-  //   const timeout = setInterval(() => {
-  //     axios
-  //       .post("http://localhost:3001/refresh", {
-  //         refreshToken,
-  //       })
-  //       .then((res) => {
-  //         setAccessToken(res.data.accessToken);
-  //         setExpiresIn(res.data.expiresIn);
-  //       })
-  //       .catch(() => {
-  //         clearTimeout(expiresIn);
-  //         window.location = "/";
-  //       });
-  //   }, (expiresIn - 60) * 1000);
+  useEffect(() => {
+    if (!expiresIn || !refreshToken) return;
+    const timeout = setInterval(() => {
+      axios
+        .post("http://localhost:3001/refresh", {
+          refreshToken,
+        })
+        .then((res) => {
+          setAccessToken(res.data.accessToken);
+          setExpiresIn(res.data.expiresIn);
+        })
+        .catch(() => {
+          clearTimeout(expiresIn);
+          window.location = "/";
+        });
+    }, (expiresIn - 60) * 1000);
 
-  //   return () => clearInterval(timeout);
-  // }, [refreshToken, expiresIn]);
+    return () => clearInterval(timeout);
+  }, [refreshToken, expiresIn]);
   // console.log(accessToken);
   return accessToken;
 };

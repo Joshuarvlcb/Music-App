@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAlbumContext } from "../util/Album";
-import ReactAudioPlayer from "react-audio-player";
 import { FaForward, FaBackward, FaPlay, FaPause } from "react-icons/fa";
 const Player = () => {
   // if (!token) return null;

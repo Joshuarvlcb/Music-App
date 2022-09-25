@@ -22,7 +22,7 @@ const Header = () => {
           </div>
           <div className="header__flex">
             <div className="header__icon"></div>
-            <div className="user__name">Guest</div>
+            <div className="user__name">Joshua</div>
           </div>
         </div>
 
