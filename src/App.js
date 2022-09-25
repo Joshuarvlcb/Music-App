@@ -26,6 +26,8 @@ function App() {
     // console.log(code);
 
     getCode(new URLSearchParams(window.location.search).get("code"));
+    console.log(new URLSearchParams(window.location.search).get("code"))
+
     {
       localStorage.getItem("token") ? nav("/home") : "loading";
     }
@@ -33,7 +35,9 @@ function App() {
       !localStorage.getItem("token") ? nav("/login") : "loading";
     }
   }, [token]);
+  
   useAuth();
+
 
   return (
     <div className="app">
