@@ -22,36 +22,36 @@ function Home() {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
+      console.log(spotify);
       spotify.setAccessToken(localStorage.getItem("token"));
       initSpotify(spotify);
     }
   }, []);
-  console.log(spotify);
 
   useEffect(() => {
     if (!localStorage.getItem("token")) return;
 
-    spotify.getPlaylistsForCategory("pop").then((d) => {
-      console.log(d.body);
+    console.log(spotify);
+
+    spotify.getPlaylistsForCategory("0JQ5DAqbMKFEC4WFtoNRpw").then((d) => {
       setAlbums(d.body.playlists.items);
     });
     spotify
-      .getPlaylistsForCategory("mood", {
+      .getPlaylistsForCategory("0JQ5DAqbMKFzHmL4tf05da", {
         limit: 20,
       })
       .then((d) => {
         setPopular(d.body.playlists.items);
       });
     spotify
-      .getPlaylistsForCategory("party", {
+      .getPlaylistsForCategory("0JQ5DAqbMKFxXaXKP7zcDp", {
         limit: 20,
       })
       .then((d) => {
         setParty(d.body.playlists.items);
-     
       });
     spotify
-      .getPlaylistsForCategory("mood", {
+      .getPlaylistsForCategory("0JQ5DAqbMKFA6SOHvT3gck", {
         limit: 20,
       })
       .then((d) => {

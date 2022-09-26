@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useAlbumContext } from "../util/Album";
 import { BsFillPlayFill } from "react-icons/bs";
-const Music = ({ name, num, data }) => {
-  const { queue, current, getCurrentTrack, playerData } = useAlbumContext();
+const Music = ({ name, num, data, songFile }) => {
+  const { queue, current, getCurrentTrack, playerData, settingAudio } =
+    useAlbumContext();
   useEffect(() => {
     console.log(queue);
   }, [queue]);
@@ -26,7 +27,7 @@ const Music = ({ name, num, data }) => {
     );
   } else {
     return (
-      <div className="track-con">
+      <div className="track-con" onClick={() => settingAudio(songFile)}>
         <div
           className="ply"
           onClick={() => {

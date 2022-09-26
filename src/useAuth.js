@@ -16,7 +16,7 @@ const useAuth = () => {
         })
         .then((res) => {
           localStorage.setItem("token", res.data.accessToken);
-          console.log(code)
+          console.log(code);
           //if local storage code is null then set token to localstorage
           gettingAccessToken(res.data.accessToken);
           setRefreshToken(res.data.refreshToken);

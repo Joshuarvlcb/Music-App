@@ -16,7 +16,6 @@ import { useAlbumContext } from "./util/Album";
 import useAuth from "./useAuth";
 
 function App() {
-
   const nav = useNavigate();
   const { player, getCode, loader, token } = useAlbumContext();
   useEffect(() => {
@@ -24,9 +23,7 @@ function App() {
     //   setLoader(false);
     // }, 3000);
     // console.log(code);
-
     getCode(new URLSearchParams(window.location.search).get("code"));
-    console.log(new URLSearchParams(window.location.search).get("code"))
 
     {
       localStorage.getItem("token") ? nav("/home") : "loading";
@@ -35,9 +32,8 @@ function App() {
       !localStorage.getItem("token") ? nav("/login") : "loading";
     }
   }, [token]);
-  
-  useAuth();
 
+  useAuth();
 
   return (
     <div className="app">

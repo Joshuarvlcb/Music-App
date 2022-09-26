@@ -59,13 +59,10 @@ const Album = () => {
               console.log(obj.track);
 
               return (
-                <div
-                  className="song"
-                  key={i}
-                  onClick={() => settingAudio(obj.track?.preview_url)}
-                >
+                <div className="song" key={i}>
                   <div className="close">
                     <Music
+                      songFile={obj.track?.preview_url}
                       name={obj?.track?.name}
                       num={i + 1}
                       data={{
@@ -170,14 +167,11 @@ const Album = () => {
               : "";
 
             return (
-              <div
-                className="song"
-                key={i}
-                onClick={() => settingAudio(obj?.preview_url)}
-              >
+              <div className="song" key={i}>
                 <div className="close">
                   <Music
                     name={obj?.name}
+                    songFile={obj?.preview_url}
                     num={i + 1}
                     data={{
                       image: data.image,
@@ -333,7 +327,7 @@ const Album = () => {
               <div
                 className="song"
                 key={i}
-                onClick={() => settingAudio(obj.preview)}
+                onClick={() => settingAudio(obj?.preview)}
               >
                 <div className="close">
                   <Music
@@ -496,15 +490,10 @@ const Album = () => {
               : "";
 
             return (
-              <div
-                className="song"
-                key={i}
-                onClick={() => {
-                  settingAudio(obj?.preview);
-                }}
-              >
+              <div className="song" key={i}>
                 <div className="close">
                   <Music
+                    songFile={obj?.preview}
                     name={obj?.name}
                     num={i + 1}
                     data={{

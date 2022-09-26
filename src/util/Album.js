@@ -80,7 +80,7 @@ export const AlbumProvider = ({ children }) => {
   const isItDoneLoading = (done) => {
     setLoader(done);
   };
-  const [searchResults, dispatch] = useReducer(reducer, ["ji"]);
+  const [searchResults, dispatch] = useReducer(reducer, [""]);
   const [current, setCurrent] = useState("");
   const [code, setCode] = useState("");
   const [token, setToken] = useState("");
